@@ -1,1 +1,3 @@
-# images_as_data
+# Images as Data
+
+Replication files for Cambridge Elements draft
