@@ -46,7 +46,7 @@ Steps:
 
 ## 3. Create an IAM user
 
-* * For security purposes, AWS highly recommends that you do not log in with as the "root" user (the user you just created, linked to your credit card). Instead, create an IAM user for yourself with administrative access, [following the steps in this tutorial](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html). The easiest option in the tutorial is "Creating an Administrator IAM User and Group (Console)." Make note of the username and password for your newly created admin user.
+* For security purposes, AWS highly recommends that you do not log in with as the "root" user (the user you just created, linked to your credit card). Instead, create an IAM user for yourself with administrative access, [following the steps in this tutorial](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html). The easiest option in the tutorial is "Creating an Administrator IAM User and Group (Console)." Make note of the username and password for your newly created admin user.
 
 * Signing in to AWS as an IAM user looks a bit different than logging in as the root user. On your IAM dashboard in AWS, you'll see the heading "IAM users sign-in link:" followed by a web address, e.g. `https://XXXXXXXX.signin.aws.amazon.com/console` where `XXXXXXXX` is your AWS account number. Bookmark or otherwise save this link somewhere you will remember it. When you log in as an IAM user, you will start from this page. 
 
