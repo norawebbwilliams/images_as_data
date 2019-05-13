@@ -16,10 +16,16 @@ rekog_results_dir = 'path_to_where_you_want_to_save_labels'
 # e.g.:
 #rekog_results_dir = 'C:/Users/Nora/Desktop/auto_tagger_example/results/'
 
+# For Code Ocean:
+rekog_results_dir = '../../results/'
+
 # Path to where your images are
 rekog_images_dir = 'path_to_where_your_images_are'
 # e.g.:
 #rekog_images_dir = 'C:/Users/Nora/Desktop/auto_tagger_example/data/'
+
+# For Code Ocean:
+rekog_images_dir = '../../autotagger_data/'
 
 ########### Connect to AWS Rekognition API
 # Read in your personal keys
@@ -35,10 +41,12 @@ secret_access_key = "your_secret_access_key"
 credentials = []
 
 ### MUST ADJUST HERE (2/2)
-with open('path_to_your_saved_AWS_access_keys.csv', newline='') as csvfile:
+#with open('path_to_your_saved_AWS_access_keys.csv', newline='') as csvfile:
 
 # e.g.:
 #with open('C:/Users/Nora/Desktop/auto_tagger_example/keys/AWS_personal_nora_admin_credentials.csv', newline='') as csvfile:
+# For Code Ocean
+with open('../../keys/AWS_personal_nora_admin_credentials.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         credentials.append(row)
@@ -51,7 +59,6 @@ client=boto3.client('rekognition','us-east-1', # or choose the best region for y
                                                # e.g. the location of your S3 bucket if using that method to store images
                     aws_access_key_id = personal_access_key, 
                     aws_secret_access_key = secret_access_key) 
-
 
 ########### Create a list of images to pass through API
 # Make a list of all the images in the rekog_data_dir you created
@@ -83,8 +90,7 @@ for imageFile in local_images:
         temp_dict["celeb_face_data"] = ""
         temp_dict["celeb_face_conf"] = ""
         temp_dict["celeb_match_conf"] = ""
-        temp_dict['celeb_metadata'] = response['ResponseMetadata']
-        temp_dict['celeb_orient_correct'] = response['OrientationCorrection']        
+        temp_dict['celeb_metadata'] = response['ResponseMetadata']  
         holder_content_celeb.append(temp_dict)
     
     ## If celebrities are detected, save a dictionary for each celebrity:
@@ -105,7 +111,6 @@ for imageFile in local_images:
             temp_dict["celeb_face_conf"] = face['Face']['Confidence']
             temp_dict["celeb_match_conf"] = face['MatchConfidence']
             temp_dict['celeb_metadata'] = response['ResponseMetadata']
-            temp_dict['celeb_orient_correct'] = response['OrientationCorrection']
             celeb_counter += 1
             holder_content_celeb.append(temp_dict)
 
@@ -116,8 +121,7 @@ with open(rekog_results_dir + 'awsrekognition_celeb_detect.csv', 'w', newline = 
                   'celeb_num', 'celeb_urls',
                   'celeb_name', 'celeb_id',
                   'celeb_face_data', 'celeb_face_conf', 
-                  'celeb_match_conf', 'celeb_metadata',
-                  'celeb_orient_correct']
+                  'celeb_match_conf', 'celeb_metadata']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
     for entry in holder_content_celeb:
