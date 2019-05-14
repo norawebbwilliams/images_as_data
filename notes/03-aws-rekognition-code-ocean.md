@@ -4,13 +4,13 @@
 
 * AWS Rekognition is one of many available image auto-tagging services. There are other options from Microsoft, Google, IBM, Clarifai, etc. All of these are probably using a trained CNN, but most keep their algorithms proprietary so it is hard to know for sure (which is one of the downsides of using these services!). Note that these services may also retain your images and any generated labels, so proceed with caution in terms of privacy and other ethical concerns. 
 
-* Each of these services offers an GUI (graphical user interface, you'll hear it pronouced like "gooey") online, where you can upload your own images to test out the service. You can find the AWS demo [here](https://console.aws.amazon.com/rekognition/home?region=us-east-1#/label-detection), though note you'll have to be logged into your AWS accont for it to work. Of course, uploading images one-by-one and recording each demo response is tedious. Accessing the Rekognition API with python is much more efficient.
+* Each of these services offers an GUI (graphical user interface, you'll hear it pronouced like "gooey") online, where you can upload your own images to test out the service. You can find the AWS demo [here](https://console.aws.amazon.com/rekognition/home?region=us-east-1#/label-detection), though note you'll have to be logged into an AWS account for it to work. Uploading images one-by-one and recording each response manually is tedious. Accessing the Rekognition API with Python is much more efficient.
 
 * Rekognition offers multiple image-tagging calls. In our workshop, we highlight two services: (1) Object and Scene Detection and (2) Celebrity Recognition. See [here](https://aws.amazon.com/rekognition/image-features/) for the full list of available Rekognition calls (content moderation, text extraction, etc.).
 
 * Rekognition currently offers free tier access, up to 5,000 API calls per month. Note that Object/Scene Detection and Celebrity Recognition are each separate API calls, so if you run both of the demo process on 2,500 images, you'll have used all your free calls for the month. After that, you will be charged per image call according to the [latest pricing](https://aws.amazon.com/rekognition/pricing/).
 
-* IMPORTANT: Using Rekognition involves making keys that are used to access the service via an API. Anyone who has access to your keys can use them, so you should keep them secure. For example: don't push your keys to Github or a public Code Ocean capsule! 
+* IMPORTANT: Using Rekognition with Python involves making keys that are used to access the service via an API. Anyone who has access to your keys can use AWS services, so you should keep your keys secure. For example: don't push your keys to Github or a public Code Ocean capsule! 
 
 
 ## Outline
